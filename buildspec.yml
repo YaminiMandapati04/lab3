@@ -9,15 +9,15 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t mywebsiteforecs:1 .
-      - docker tag mywebsiteforecs:1 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user29/lab4repo:1
+      - docker build -t mywebsiteforecs:3 .
+      - docker tag mywebsiteforecs:3 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user29/lab4repo:3
 
   post_build:
     commands:
       - echo Pushing the Docker image to ECR...
-      - docker push 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user29/lab4repo:1
+      - docker push 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user29/lab4repo:3
       - echo Writing image definitions file...
-      - printf '[{"name":"user29container","imageUri":"%s"}]' 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user29/lab4repo:1 > imagedefinitions.json
+      - printf '[{"name":"user29container","imageUri":"%s"}]' 864899837235.dkr.ecr.ap-south-1.amazonaws.com/user29/lab4repo:3 > imagedefinitions.json
 
 artifacts:
   files: imagedefinitions.json
